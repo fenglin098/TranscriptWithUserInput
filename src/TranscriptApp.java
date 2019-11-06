@@ -1,15 +1,15 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TranscriptApp {
     public static void main(String[] args) {
-    Transcript transcript = new Transcript();
-    transcript.addCourse();
+        Transcript school = new Transcript();
         String cAnswer;
         String sAnswer;
         System.out.println("Welcome to the transcript application.");
         Scanner sc = new Scanner(System.in);
-
         do {
             Transcript student = new Transcript();
             System.out.println("Enter Student ID number: ");
@@ -30,6 +30,7 @@ public class TranscriptApp {
                 item.setCourseName(cName);
                 System.out.println("Enter credits: ");
                 int cNum = sc.nextInt();
+                sc.nextLine();
                 item.setCredits(cNum);
                 System.out.println("Enter grade: ");
                 String cGrade = sc.next();
@@ -46,13 +47,14 @@ public class TranscriptApp {
                     item.setQualityPoints(0);
                 }
                 arrclass.add(item);
-                student.setClasses(arrclass);
                 System.out.println("Another course? (y/n)");
                 cAnswer = sc.next();
             } while (cAnswer.equalsIgnoreCase("y"));
+            student.setClasses(arrclass);
             System.out.println("Another student? (y/n)");
-            sAnswer= sc.next();
-        }while (sAnswer.equalsIgnoreCase("y"));
-
+            sAnswer = sc.next();
+        } while (sAnswer.equalsIgnoreCase("y"));
+        System.out.println(school.getFirstName()+" "+school.getLastName());
+        System.out.println("Student ID: "+school.getStudentID());
     }
 }
